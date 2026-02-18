@@ -31,6 +31,7 @@ export class UIManager {
   private boundEscKeyHandler?: (event: KeyboardEvent) => void;
 
   constructor() {
+    console.log('UIManager 构造函数开始');
     // 获取所有UI元素引用
     this.scoreDisplay = this.getElement('currentScore');
     this.highScoreDisplay = this.getElement('highScore');
@@ -47,6 +48,9 @@ export class UIManager {
     if (!this.closeButton) {
       throw new Error('Close button not found in leaderboard modal');
     }
+    
+    console.log('UIManager 构造完成，所有元素已获取');
+    console.log('开始按钮:', this.startButton);
   }
 
   /**

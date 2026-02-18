@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>按钮测试</title>
+</head>
+<body>
+  <h1>按钮测试</h1>
+  <button id="testButton">点击我</button>
+  
+  <script>
+    console.log('脚本开始执行');
+    const button = document.getElementById('testButton');
+    console.log('按钮元素:', button);
+    
+    if (button) {
+      button.addEventListener('click', () => {
+        console.log('按钮被点击了！');
+        alert('按钮工作正常！');
+      });
+      console.log('事件监听器已绑定');
+    } else {
+      console.error('找不到按钮元素');
+    }
+  </script>
+</body>
+</html>
