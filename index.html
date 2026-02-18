@@ -51,6 +51,33 @@
         <button id="leaderboardButton" class="btn btn-secondary" aria-label="查看历史最高分排行榜">查看排行榜</button>
       </aside>
     </main>
+    
+    <!-- 移动端虚拟方向键 -->
+    <div id="touchControls" class="touch-controls">
+      <div class="dpad">
+        <button class="dpad-btn dpad-up" data-direction="up" aria-label="向上">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+          </svg>
+        </button>
+        <button class="dpad-btn dpad-down" data-direction="down" aria-label="向下">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </button>
+        <button class="dpad-btn dpad-left" data-direction="left" aria-label="向左">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+          </svg>
+        </button>
+        <button class="dpad-btn dpad-right" data-direction="right" aria-label="向右">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
+        </button>
+        <div class="dpad-center"></div>
+      </div>
+    </div>
   </div>
   
   <div id="leaderboardModal" class="modal" style="display: none;" role="dialog" aria-labelledby="leaderboardTitle" aria-modal="true">

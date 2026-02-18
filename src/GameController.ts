@@ -80,9 +80,65 @@ export class GameController {
     const canvas = this.renderer.canvas;
     canvas.addEventListener('touchstart', this.boundTouchStartHandler, { passive: false });
     canvas.addEventListener('touchend', this.boundTouchEndHandler, { passive: false });
+    
+    // 绑定虚拟方向键事件
+    this.setupVirtualDPad();
 
     // 绑定窗口失焦事件（需求6.7）
     window.addEventListener('blur', this.boundWindowBlurHandler);
+  }
+  
+  /**
+   * 设置虚拟方向键（移动端）
+   */
+  private setupVirtualDPad(): void {
+    const dpadButtons = document.querySelectorAll('.dpad-btn');
+    
+    dpadButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        if (this.model.state !== GameState.PLAYING) {
+          return;
+        }
+        
+        const direction = (button as HTMLElement).getAttribute('data-direction');
+        
+        switch (direction) {
+          case 'up':
+            this.model.snake.changeDirection(Direction.UP);
+            break;
+          case 'down':
+            this.model.snake.changeDirection(Direction.DOWN);
+            break;
+          case 'left':
+            this.model.snake.changeDirection(Direction.LEFT);
+            break;
+          case 'right':
+            this.model.snake.changeDirection(Direction.RIGHT);
+            break;
+        }
+      });
+      
+      // 添加触摸反馈
+      button.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        (button as HTMLElement).style.transform = 'scale(0.95)';
+      });
+      
+      button.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        const btn = button as HTMLElement;
+        const isVertical = btn.classList.contains('dpad-up') || btn.classList.contains('dpad-down');
+        const isHorizontal = btn.classList.contains('dpad-left') || btn.classList.contains('dpad-right');
+        
+        if (isVertical) {
+          btn.style.transform = 'translateX(-50%)';
+        } else if (isHorizontal) {
+          btn.style.transform = 'translateY(-50%)';
+        }
+      });
+    });
   }
 
   /**

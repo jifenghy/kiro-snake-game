@@ -795,3 +795,135 @@ body {
   background: #f44336 !important;
   animation: shake 0.5s ease-out;
 }
+
+/* 移动端虚拟方向键 */
+.touch-controls {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+/* 在移动设备上显示虚拟方向键 */
+@media (max-width: 768px) {
+  .touch-controls {
+    display: block;
+  }
+}
+
+/* 在触摸设备上显示虚拟方向键 */
+@media (hover: none) and (pointer: coarse) {
+  .touch-controls {
+    display: block;
+  }
+}
+
+.dpad {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.dpad-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(76, 175, 80, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  color: white;
+}
+
+.dpad-btn svg {
+  width: 32px;
+  height: 32px;
+}
+
+.dpad-btn:active {
+  background: rgba(76, 175, 80, 1);
+  transform: scale(0.95);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+}
+
+.dpad-up {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dpad-down {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dpad-left {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dpad-right {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dpad-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 横屏模式下调整虚拟方向键位置 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .touch-controls {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .dpad {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .dpad-btn {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .dpad-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 400px) {
+  .touch-controls {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .dpad {
+    width: 130px;
+    height: 130px;
+  }
+}
