@@ -146,9 +146,12 @@ export class GameController {
    * 需求：6.2, 7.6
    */
   startGame(): void {
+    console.log('GameController.startGame 被调用');
     // 初始化游戏状态
     this.model.initGame();
     this.model.state = GameState.PLAYING;
+    
+    console.log('游戏状态已设置为 PLAYING');
     
     // 添加游戏开始动画 (需求 7.6)
     this.uiManager.addGameStartAnimation(this.renderer.canvas);
@@ -165,6 +168,7 @@ export class GameController {
     // 启动游戏循环
     this.lastUpdateTime = performance.now();
     this.gameLoopId = requestAnimationFrame((timestamp) => this.gameLoop(timestamp));
+    console.log('游戏循环已启动，ID:', this.gameLoopId);
   }
 
   /**

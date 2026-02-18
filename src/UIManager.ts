@@ -276,9 +276,11 @@ export class UIManager {
   }): void {
     // 绑定开始按钮
     this.boundStartHandler = () => {
+      console.log('开始按钮被点击');
       this.addButtonClickFeedback(this.startButton);
       callbacks.onStart();
     };
+    console.log('绑定开始按钮事件监听器', this.startButton);
     this.startButton.addEventListener('click', this.boundStartHandler);
 
     // 绑定暂停按钮
