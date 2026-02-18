@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪吃蛇游戏</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>贪吃蛇游戏</h1>
+    </header>
+    
+    <!-- 屏幕阅读器公告区域 (需求 6.5) -->
+    <div id="gameAnnouncements" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    
+    <main class="game-container">
+      <div class="game-area">
+        <canvas id="gameCanvas" aria-label="贪吃蛇游戏区域。使用方向键或WASD键控制蛇的移动方向，空格键暂停游戏。" tabindex="0"></canvas>
+      </div>
+      
+      <aside class="control-panel">
+        <div class="score-display">
+          <h2>分数</h2>
+          <p id="currentScore" class="score">0</p>
+          <p class="high-score">最高分: <span id="highScore">0</span></p>
+        </div>
+        
+        <div class="speed-control">
+          <h3 id="speedControlLabel">游戏速度</h3>
+          <div class="speed-buttons" role="group" aria-labelledby="speedControlLabel">
+            <button id="slowSpeed" class="speed-btn" data-speed="slow" aria-label="慢速：每秒5格">慢速</button>
+            <button id="mediumSpeed" class="speed-btn active" data-speed="medium" aria-label="中速：每秒10格" aria-pressed="true">中速</button>
+            <button id="fastSpeed" class="speed-btn" data-speed="fast" aria-label="快速：每秒15格">快速</button>
+          </div>
+        </div>
+        
+        <div class="game-controls">
+          <button id="startButton" class="btn btn-primary" aria-label="开始新游戏">开始游戏</button>
+          <button id="pauseButton" class="btn btn-secondary" style="display: none;" aria-label="暂停游戏">暂停</button>
+          <button id="restartButton" class="btn btn-primary" style="display: none;" aria-label="重新开始游戏">重新开始</button>
+        </div>
+        
+        <div class="instructions">
+          <h3>操作说明</h3>
+          <p>方向键 / WASD: 控制方向</p>
+          <p>空格键: 暂停/继续</p>
+        </div>
+        
+        <button id="leaderboardButton" class="btn btn-secondary" aria-label="查看历史最高分排行榜">查看排行榜</button>
+      </aside>
+    </main>
+  </div>
+  
+  <div id="leaderboardModal" class="modal" style="display: none;" role="dialog" aria-labelledby="leaderboardTitle" aria-modal="true">
+    <div class="modal-content">
+      <span class="close" aria-label="关闭排行榜">&times;</span>
+      <h2 id="leaderboardTitle">排行榜</h2>
+      <div id="leaderboardList"></div>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
